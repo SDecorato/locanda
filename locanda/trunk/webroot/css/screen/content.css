@@ -1,0 +1,839 @@
+/**
+ * "Yet Another Multicolumn Layout" - (X)HTML/CSS Framework
+ *
+ * (en) Uniform design of standard content elements
+ * (de) Einheitliche Standardformatierungen für die wichtigten Inhalts-Elemente
+ *
+ * @copyright       Copyright 2005-2010, Dirk Jesse
+ * @license         CC-A 2.0 (http://creativecommons.org/licenses/by/2.0/),
+ *                  YAML-C (http://www.yaml.de/en/license/license-conditions.html)
+ * @link            http://www.yaml.de
+ * @package         yaml
+ * @version         3.3
+ * @revision        $Revision:392 $
+ * @lastmodified    $Date:2009-07-05 12:18:40 +0200 (So, 05. Jul 2009) $
+ * @appdef yaml
+ */
+
+@media all
+{
+ /**
+  * Fonts
+  *
+  * (en) global settings of font-families and font-sizes
+  * (de) Globale Einstellungen für Zeichensatz und Schriftgrößen
+  *
+  * @section content-global-settings
+  */
+
+  /* (en) reset font size for all elements to standard (16 Pixel) */
+  /* (de) Alle Schriftgrößen auf Standardgröße (16 Pixel) zurücksetzen */
+  html * { font-size:100.01%; }
+
+ /**
+  * (en) reset monospaced elements to font size 16px in all browsers
+  * (de) Schriftgröße von monospaced Elemente in allen Browsern auf 16 Pixel setzen
+  *
+  * @see: http://webkit.org/blog/67/strange-medium/
+  */
+
+  textarea, pre, code, kbd, samp, var, tt {
+    font-family:Consolas, "Lucida Console", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier;
+  }
+
+  /* (en) base layout gets standard font size 12px */
+  /* (de) Basis-Layout erhält Standardschriftgröße von 12 Pixeln */
+  body {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:75.00%;
+    color:#444;
+  }
+
+  /*--- Headings | Überschriften ------------------------------------------------------------------------*/
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family:"Times New Roman", Times, serif;
+    font-weight:normal;
+    color:#222;
+    margin:0 0 0.25em 0;
+  }
+
+  h1 { font-size:250%; }                       /* 30px */
+  h2 { font-size:200%; }                       /* 24px */
+  h3 { font-size:150%; }                       /* 18px */
+  h4 { font-size:133.33%; }                    /* 16px */
+  h5 { font-size:116.67%; }                    /* 14px */
+  h6 { font-size:116.67%; }                    /* 14px */
+
+  /* --- Lists | Listen  -------------------------------------------------------------------------------- */
+
+  ul, ol, dl { line-height:1.5em; margin:0 0 1em 1em; }
+  ul { list-style-type:disc; }
+  ul ul { list-style-type:circle; margin-bottom:0; }
+
+  ol { list-style-type:decimal; }
+  ol ol { list-style-type:lower-latin; margin-bottom:0; }
+
+  li { margin-left:0.8em; line-height:1.5em; position: relative; }
+
+  dt { font-weight:bold; }
+  dd { margin:0 0 1em 0.8em; }
+
+  /* --- general text formatting | Allgemeine Textauszeichnung ------------------------------------------ */
+
+  p { line-height:1.5em; margin:0 0 1em 0; }
+
+  blockquote, cite, q {
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-style:italic;
+  }
+  blockquote { margin:0 0 1em 1.6em; color:#666; }
+
+  strong,b { font-weight:bold; }
+  em,i { font-style:italic; }
+
+  big { font-size:116.667%; }
+  small { font-size:91.667%; }
+ 
+  pre { line-height:1.5em; margin:0 0 1em 0; }
+  pre, code, kbd, tt, samp, var { font-size:100%; }
+  pre, code { color:#800; }
+  kbd, samp, var, tt { color:#666; font-weight:bold; }
+  var, dfn { font-style:italic; }
+
+  acronym, abbr {
+    border-bottom:1px #aaa dotted;
+    font-variant:small-caps;
+    letter-spacing:.07em;
+    cursor:help;
+  }
+  
+  sub { vertical-align: sub; font-size: smaller; }
+  sup { vertical-align: super; font-size: smaller; }
+
+  hr {
+    color:#fff;
+    background:transparent;
+    margin:0 0 0.5em 0;
+    padding:0 0 0.5em 0;
+    border:0;
+    border-bottom:1px #eee solid;
+  }
+
+  /*--- Links ----------------------------------------------------------------------------------------- */
+
+  a { color:#4D87C7; background:transparent; text-decoration:none; }
+  a:visited  { color:#036; }
+
+  /* (en) maximum constrast for tab focus - change with great care */
+  /* (en) Maximaler Kontrast für Tab Focus - Ändern Sie diese Regel mit Bedacht */
+  a:focus { text-decoration:underline; color:#000; background: #fff; outline: 3px #f93 solid; }
+  a:hover,
+  a:active { color:#182E7A; text-decoration:underline; outline: 0 none; }
+
+  /* --- images (with optional captions) | Bilder (mit optionaler Bildunterschrift) ------------------ */
+
+  p.icaption_left { float:left; display:inline; margin:0 1em 0.15em 0; }
+  p.icaption_right { float:right; display:inline; margin:0 0 0.15em 1em; }
+
+  p.icaption_left img,
+  p.icaption_right img { padding:0; border:1px #888 solid; }
+
+  p.icaption_left strong,
+  p.icaption_right strong { display:block; overflow:hidden; margin-top:2px; padding:0.3em 0.5em; background:#eee; font-weight:normal; font-size:91.667%; }
+
+ /**
+  * ------------------------------------------------------------------------------------------------- #
+  *
+  * Generic Content Classes
+  *
+  * (en) standard classes for positioning and highlighting
+  * (de) Standardklassen zur Positionierung und Hervorhebung
+  *
+  * @section content-generic-classes
+  */
+
+  .highlight { color:#c30; }
+  .dimmed { color:#888; }
+
+  .info { background:#f8f8f8; color:#666; padding:10px; margin-bottom:0.5em; font-size:91.7%; }
+
+  .note { background:#efe; color:#040; border:2px #484 solid; padding:10px; margin-bottom:1em; }
+  .important { background:#ffe; color:#440; border:2px #884 solid; padding:10px; margin-bottom:1em; }
+  .warning { background:#fee; color:#400; border:2px #844 solid; padding:10px; margin-bottom:1em; }
+
+  .float_left { float:left; display:inline; margin-right:1em; margin-bottom:0.15em; }
+  .float_right { float:right; display:inline; margin-left:1em; margin-bottom:0.15em; }
+  .center { display:block; text-align:center; margin:0.5em auto; }
+
+ /**
+  * ------------------------------------------------------------------------------------------------- #
+  *
+  * Tables | Tabellen
+  *
+  * (en) Generic classes for table-width and design definition
+  * (de) Generische Klassen für die Tabellenbreite und Gestaltungsvorschriften für Tabellen
+  *
+  * @section content-tables
+  */
+
+  table { width:auto; border-collapse:collapse; margin-bottom:0.5em; border-top:2px #888 solid; border-bottom:2px #888 solid; }
+  table caption { font-variant:small-caps; }
+  table.full { width:100%; margin-top: 12px;}
+  table.fixed { table-layout:fixed; }
+
+  th,td { padding:0.5em; }
+  thead th { color:#000; border-bottom:2px #800 solid; }
+  tbody th { background:#e0e0e0; color:#333; }
+  tbody th[scope="row"], tbody th.sub { background:#f0f0f0; }
+
+  tbody th { border-bottom:1px solid #fff; text-align:left; }
+  tbody td { border-bottom:1px solid #eee; }
+
+  tbody tr:hover th[scope="row"],
+  tbody tr:hover tbody th.sub { background:#f0e8e8; }
+  tbody tr:hover td { background:#fff8f8; }
+
+ /**
+  * ------------------------------------------------------------------------------------------------- #
+  *
+  * Miscellaneous | Sonstiges
+  *
+  * @section content-misc
+  */
+
+ /**
+  * (en) Emphasizing external Hyperlinks via CSS
+  * (de) Hervorhebung externer Hyperlinks mit CSS
+  *
+  * @section             content-external-links
+  * @app-yaml-default    disabled
+  */
+
+  /*
+  #main a[href^="http://www.my-domain.com"],
+  #main a[href^="https://www.my-domain.com"]
+  {
+    padding-left:12px;
+    background-image:url('your_image.gif');
+    background-repeat:no-repeat;
+    background-position:0 0.45em;
+  }
+  */
+}
+
+ /**
+  * Locanda customization
+  *
+  */
+div.hideform
+{
+	display: none;
+	height: 100%;
+}
+div.header_section
+{
+	height: 60px;
+	position: relative;
+}
+div.header_section span.name_section
+{
+	float: left;
+	font-size: 250%;
+	font-weight: 600;
+}
+div.header_section span.btn_right
+{
+	background-image: url('../images/logo_add.png');
+	background-position: 0 0;
+	float: right;
+}
+div.header_section a.btn_right_
+{
+	background: url('../../images/locanda_add.png') no-repeat scroll 0 0 transparent;
+	float: right;
+	height: 44px;
+	width: 191px;
+}
+div.header_section a.btn_right_en
+{
+	background: url('../../images/locanda_add.png') no-repeat scroll 0 0 transparent;
+	float: right;
+	height: 44px;
+	width: 191px;
+}
+div.header_section a.btn_right_it
+{
+	background: url('../../images/locanda_add.png') no-repeat scroll 0px -90px transparent;
+	float: right;
+	height: 44px;
+	width: 191px;
+}
+div.header_section a.btn_right_it:hover
+{
+	background-position: 0 -137px;
+}
+div.header_section a.btn_right_en:hover
+{
+	background-position: 0 -44px;
+}
+a.btn_season
+{
+	background: url('../../images/locanda_add_season.png') no-repeat scroll 0 0 transparent;
+	float: left;
+	height: 44px;
+	width: 191px;
+}
+a.btn_season:hover
+{
+	background-position: 0 -44px;
+}
+a.btn_save_all
+{
+	background: url('../../images/btn_save_all.png') no-repeat scroll 0 0 transparent;
+	float: left;
+	height: 44px;
+	width: 191px;
+}
+a.btn_save_all:hover
+{
+	background-position: 0 -44px;
+}
+a.btn_right_save_all
+{
+	background: url('../../images/btn_save_all.png') no-repeat scroll 0 0 transparent;
+	float: right;
+	height: 44px;
+	width: 129px;
+}
+a.btn_right_save_all:hover
+{
+	background-position: 0 -44px;
+}
+a.btn_right_add_new
+{
+	background: url('../../images/btn_add_new.png') no-repeat scroll 0 0 transparent;
+	float: right;
+	height: 44px;
+	width: 129px;
+}
+a.btn_right_add_new:hover
+{
+	background-position: 0 -44px;
+}
+ul.sub_menu
+{
+	clear: both;
+	display: none;
+	left: 0;
+	margin: 0;
+	margin-left: 0! important;
+	margin-top: 0px;
+	padding: 0;
+	position: absolute;
+	z-index: 2000;
+}
+ul.sub_menu li, ul.sub_menu li a
+{
+	background: none;
+	border: none;
+}
+ul.sub_menu li, ul.sub_menu li a
+{
+	border-radius: 6px;
+	moz-border-radius: 6px;
+}
+ul.sub_menu li:hover,ul.sub_menu li a:hover
+{
+	background: none;
+	background-color: #AFD775;
+}
+#header
+{
+	background: none;
+	height: 45px;
+}
+.hlist
+{
+	background-color: #fff;
+}
+.yform
+{
+	background: none;
+	border: none;
+	text-align: left;
+}
+.yform div.chng_pwd
+{
+	display: none;
+}
+.yform .error
+{
+	color: #880000;
+	font-weight: 600;
+}
+.c10l
+{
+	float: left;
+	width: 10%;
+}
+.c5l
+{
+	float: left;
+	width: 5%;
+}
+.c45l
+{
+	float: left;
+	width: 45%;
+}
+.c10r
+{
+	float: right;
+	width: 10%;
+}
+span.title_season
+{
+	font-size: 13px;
+	font-weight: 600;
+}
+span.title_season input
+{
+	border: 1px solid #fff;
+}
+#chng_season_name
+{
+	background: none;
+	color: #000;
+	cursor: text;
+	display: none;
+	float: left;
+	font-size: 15px;
+	font-weight: 600;
+	margin-top: 6px;
+}
+.type-button a:focus
+{
+	outline: none;
+	text-decoration: none;
+}
+.yform div.type-select
+{
+	font-weight: 600;
+}
+div.type_rooms label
+{
+	display: inline;
+}
+.right
+{
+	float: right;
+}
+.left
+{
+	float: left;
+}
+.center
+{
+	text-align: center;
+}
+#home
+{
+	font-size: 120%;
+	padding: 3%;
+	text-align: center;
+}
+.radiogroup
+{
+	margin-left: 1.2em;
+	margin-right: 1.2em;
+}
+#price_room, #extra_room, #extras_room, .subtotal_room, .balance_room
+{
+	font-size: 20px;
+}
+.extra_value_adjustment, #extra_adjustment, #per_value, #all_year, #next_thanks, #per_breakfast, #per_parking
+{
+	display: inline;
+	width: 40px;
+}
+.clickable
+{
+	color: blue;
+	cursor: pointer;
+	font-weight: 600;
+}
+.yform div.type-text input.describe
+{
+	border: none;
+	font-weight: 600;
+}
+a.describe_edit:focus
+{
+	outline: none;
+	text-decoration: none;
+}
+input[name="room_name"]
+{
+	border: none;
+	font-size: 17px;
+	font-weight: 600;
+}
+input[name="room_name"]:focus
+{
+	border: 1px solid #000;
+}
+input[name="description"]:hover
+{
+	border: none;
+}
+.edited_room_name
+{
+	color: red;
+}
+select[name="confirm"]
+{
+	width: 120px;
+}
+input.txt_guest_search
+{
+	float: left;
+	font-size: 17px;
+	font-weight: 600;
+	height: 25px;
+	width: 320px;
+}
+.btn_g_search
+{
+	margin-left: 8px;
+	margin-top: 0px;
+}
+div.search_links
+{
+	clear: left;
+	height: 30px;
+}
+div.search_links a, div.search_links span
+{
+}
+.book_guest span
+{
+	color: #333333;
+	font-size: 14px;
+}
+.book_guest span.link
+{
+	color: blue;
+	font-weight: 600;
+}
+ul.list_usable
+{
+	display: none;
+}
+.yform .type-text textarea.large
+{
+	height: 180px;
+	width: 100%;
+}
+.type_rooms
+{
+	text-align: left;
+}
+div.book_details
+{
+	text-align: left;
+}
+#change_rate
+{
+	background: transparent;
+	color: #4D87C7;
+	text-decoration: none;
+}
+#change_rate:hover, #change_rate:focus
+{
+	outline: none;
+}
+.yform .type-text .small_input
+{
+	display: inline;
+	width: 15%;
+}
+input[name="room.name"]
+{
+	color: #595959;
+	font-weight: 600;
+}
+.ui-widget-overlay
+{
+	background-color: #000;
+	display: none;
+	height: 100%;
+	left: 0;
+	opacity: 0.7;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1500;
+}
+.upload_loader
+{
+	background: url("../../images/loading.gif");
+	display: none;
+	height: 15px;
+	vertical-align: text-bottom;
+	width: 15px;
+}
+div.facility
+{
+	border: 1px dotted grey;
+	margin-bottom: 2px;
+	padding: 2px;
+	position: relative;
+}
+.facility label
+{
+	display: inline;
+}
+div.beautify fieldset
+{
+	background: none repeat scroll 0 0 #FAFAFA;
+	border: 1px solid #DDDDDD;
+	display: block;
+	margin: 0 0 1em;
+	padding: 0.5em;
+}
+.beautify .error
+{
+	color: #880000;
+	font-weight: 600;
+}
+a.navigation-tab
+{
+	background: url('../../images/go-back-icon.png') no-repeat scroll 0 0 transparent;
+	float: left;
+	height: 32px;
+	width: 32px;
+}
+a.home
+{
+	background: url('../../images/home_small.png') no-repeat scroll 0 0 transparent;
+	height: 32px;
+	line-height: 50px;
+	margin: 5px 5px 0 0;
+	width: 32px;
+}
+p.navigation
+{
+	display: inline;
+	font-weight: bold;
+	line-height: 2;
+}
+p.navigation a, p.navigation b, p.navigation span
+{
+	float: left;
+	font-size: 120%;
+}
+div.beautify
+{
+	background: none repeat scroll 0 0 #FAFAFA;
+	border: 1px solid #DDDDDD;
+	float: left;
+	margin: -13px 0 1em;
+	padding: 0.5em;
+	width: 100%;
+}
+div.beauty
+{
+	background: none repeat scroll 0 0 #FAFAFA;
+	border: 1px solid #DDDDDD;
+	margin: 0px 0 1em;
+	padding: 0.5em;
+}
+#topnav a.logout
+{
+	background: url('../../images/logout.png') no-repeat scroll 0 0 transparent;
+	display: block;
+	float: right;
+	height: 32px;
+	width: 32px;
+}
+.loaderback
+{
+	background: url('../../images/booking_loader.gif') no-repeat scroll 0 0 transparent;
+	background-position: center;
+}
+ul.thumbs, ul.thumbs_facility
+{
+	float: left;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+ul.thumbs li, ul.thumbs_facility li
+{
+	float: left;
+	list-style: none outside none;
+	margin: 2px;
+	opacity: 0.67;
+	padding: 0;
+}
+ul.thumbs li:hover, ul.thumbs_facility li:hover
+{
+	opacity: 1.0;
+}
+ul.thumbs li a.thumb img,ul.thumbs_facility li a.thumb img
+{
+	border: medium none;
+	display: block;
+	height: 95px;
+	width: 95px;
+}
+ul.thumbs li span, ul.thumbs_facility li span
+{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+	bottom: 5px;
+	color: #fff;
+	font-weight: 600;
+	max-height: 18px;
+	max-width: 80px;
+	overflow: hidden;
+	padding: 1px 5px;
+	position: absolute;
+	right: 5px;
+}
+ul.thumbs li span a, ul.thumbs_facility li span a
+{
+	position: absolute;
+	right: 1px;
+	top: 0px;
+}
+.noBorder
+{
+	background: none;
+	border: none;
+}
+input.static_small_input
+{
+	width: 40px;
+}
+#topnav a.login-top, a.login-bottom
+{
+	background: url("../images/key-icon.png") no-repeat scroll 5px 5px #DEE8FC;
+	border: 1px solid #88A4D6;
+	color: #3B5998;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
+	height: 32px;
+	left: 690px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	padding: 2px 7px 2px 27px;
+	text-decoration: none;
+	top: 24px;
+	webkit-border-radius: 5px 5px 5px 5px;
+	width: 130px;
+}
+#topnav a.login-top:hover
+{
+	background: url("../images/key-icon.png") no-repeat scroll 5px 5px #88A4D6;
+	color: #fff;
+}
+#topnav a.flag_it
+{
+	background: url("../images/flags/it.png") no-repeat scroll;
+	display: block;
+	float: left;
+	height: 16px;
+	margin-right: 3px;
+	width: 16px;
+}
+#topnav a.flag_en
+{
+	background: url("../images/flags/en.png") no-repeat scroll;
+	display: block;
+	float: left;
+	height: 16px;
+	margin-right: 3px;
+	width: 16px;
+}
+div.langMenu
+{
+	float: left;
+	height: 17px;
+}
+.yform .type-select select.confirm
+{
+	width: 80%;
+}
+.facility img
+{
+	cursor: pointer;
+}
+span.hov_edit
+{
+	background: url("../images/edit-icon.png") no-repeat scroll;
+	background-color: #3B3A3A;
+	bottom: 0px;
+	cursor: pointer;
+	display: none;
+	height: 17px;
+	position: absolute;
+	width: 24px;
+}
+input[name='facility_name']
+{
+	width: 180px;
+}
+#signup ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+#signup ul li
+{
+	display: inline;
+}
+#signup ul li a
+{
+	background-color: #327E04;
+	color: #fff;
+	font-weight: 600;
+	padding: .2em 1em;
+	text-decoration: none;
+}
+.errorMessage
+{
+	color: red;
+}
+a.skype
+{
+	background: url("../images/skype-icon.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	float: right;
+	height: 22px;
+	width: 24px;
+}
+a.gmaps
+{
+	background: url("../images/maps-icon.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	float: right;
+	height: 22px;
+	width: 24px;
+}
+span.copy
+{
+	background: url("../images/copy.png") no-repeat scroll 0 0 transparent;
+	cursor: pointer;
+	display: none;
+	float: right;
+	height: 22px;
+	width: 24px;
+}
+#path_nodes
+{
+	font-size: 11px;
+
+}
